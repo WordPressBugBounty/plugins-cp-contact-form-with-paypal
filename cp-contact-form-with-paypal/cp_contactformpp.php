@@ -3,7 +3,7 @@
 Plugin Name: CP Contact Form with PayPal
 Plugin URI: https://cfpaypal.dwbooster.com
 Description: Inserts a contact form into your website and lets you connect it to a Paypal payment.
-Version: 1.3.50
+Version: 1.3.51
 Author: CodePeople, paypaldev
 Author URI: https://cfpaypal.dwbooster.com
 License: GPL
@@ -103,6 +103,7 @@ include_once dirname( __FILE__ ) . '/cp_contactformpp_functions.php';
 
 register_activation_hook(__FILE__,'cp_contactformpp_install');
 
+add_action('init', 'cpcfwpp_plugin_init_lang', 10 );
 add_action('init', 'cp_contact_form_paypal_check_init_actions', 11 );
 add_action('plugins_loaded', 'cpcfwpp_plugin_init');
 add_action('wp_loaded', 'cp_contactformpp_data_management_loaded' );

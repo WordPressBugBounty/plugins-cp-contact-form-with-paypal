@@ -6,8 +6,11 @@ if ( !defined('CP_CONTACTFORMPP_AUTH_INCLUDE') ) { echo 'Direct access not allow
 //------------------------------------------
 
 
-function cpcfwpp_plugin_init() {
-   load_plugin_textdomain( 'cp-contact-form-with-paypal', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+function cpcfwpp_plugin_init_lang() {
+    load_plugin_textdomain( 'cp-contact-form-with-paypal', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+function cpcfwpp_plugin_init() {  
    $ao_options = get_option('autoptimize_js_exclude',"seal.js, js/jquery/jquery.js");
    if (!strpos($ao_options,'stringify.js'))
       update_option('autoptimize_js_exclude',"jQuery.stringify.js,jquery.validate.js,".$ao_options);
@@ -94,16 +97,16 @@ function _cp_contactformpp_install() {
 
          fp_from_email VARCHAR(250) DEFAULT '' NOT NULL,
          fp_destination_emails text,
-         fp_subject VARCHAR(250) DEFAULT '' NOT NULL,
+         fp_subject TEXT DEFAULT '' NOT NULL,
          fp_inc_additional_info VARCHAR(20) DEFAULT '' NOT NULL,
-         fp_return_page VARCHAR(250) DEFAULT '' NOT NULL,
-         fp_error_page VARCHAR(250) DEFAULT '' NOT NULL,
+         fp_return_page TEXT DEFAULT '' NOT NULL,
+         fp_error_page TEXT DEFAULT '' NOT NULL,
          fp_message text,
          fp_emailformat VARCHAR(15) DEFAULT '' NOT NULL,
 
          cu_enable_copy_to_user VARCHAR(10) DEFAULT '' NOT NULL,
          cu_user_email_field VARCHAR(250) DEFAULT '' NOT NULL,
-         cu_subject VARCHAR(250) DEFAULT '' NOT NULL,
+         cu_subject TEXT DEFAULT '' NOT NULL,
          cu_message text,
          cp_emailformat VARCHAR(10) DEFAULT '' NOT NULL,
 
@@ -130,7 +133,7 @@ function _cp_contactformpp_install() {
          
          paypal_notiemails varchar(10) DEFAULT '' NOT NULL,
          paypal_email varchar(255) DEFAULT '' NOT NULL ,         
-         request_cost varchar(255) DEFAULT '' NOT NULL ,
+         request_cost TEXT DEFAULT '' NOT NULL,
          paypal_price_field varchar(255) DEFAULT '' NOT NULL ,
          request_taxes varchar(20) DEFAULT '' NOT NULL ,
          request_address varchar(20) DEFAULT '' NOT NULL ,
