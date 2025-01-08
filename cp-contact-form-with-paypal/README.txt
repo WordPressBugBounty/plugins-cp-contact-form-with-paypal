@@ -4,7 +4,7 @@ Donate link: https://cfpaypal.dwbooster.com
 Tags: paypal,payment,paypal donation,paypal form,payment form
 Requires at least: 3.0.5
 Tested up to: 6.7
-Stable tag: 1.3.51
+Stable tag: 1.3.52
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -968,7 +968,10 @@ When done to refund a payment just use the refund button that appears for each t
 = 1.3.51 =
 * Compatible with WP 6.7
 
+= 1.3.52 =
+* Old WP compatibility
+
 == Upgrade Notice ==
 
-= 1.3.51 =
-* Compatible with WP 6.7
+= 1.3.52 =
+* Old WP compatibility
