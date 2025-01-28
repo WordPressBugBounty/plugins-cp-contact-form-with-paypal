@@ -152,6 +152,7 @@ if ($message) echo "<div id='setting-error-settings_updated' class='updated sett
 
 
 <form action="admin.php" method="get">
+ <input type="hidden" name="nonce" value="<?php echo esc_attr($nonce); ?>" />
  <input type="hidden" name="page" value="cp_contact_form_paypal.php" />
  <input type="hidden" name="cal" value="<?php echo intval(CP_CONTACTFORMPP_ID); ?>" />
  <input type="hidden" name="list" value="1" />

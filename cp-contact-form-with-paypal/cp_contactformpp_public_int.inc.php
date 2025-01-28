@@ -16,13 +16,8 @@
 </div>    
 <div style="display:none">
 <div id="cpcaptchalayer<?php echo esc_html($CP_CPP_global_form_count); ?>">
-<?php if (count($codes)) { ?>
-     <?php echo __('Coupon code','cp-contact-form-with-paypal'); ?>:<br />
-     <input type="text" name="couponcode" value=""><br />
-<?php } ?>
-  <br />
 <?php if (cp_contactformpp_get_option('cv_enable_captcha', CP_CONTACTFORMPP_DEFAULT_cv_enable_captcha,$id) != 'false') { ?>
-  <?php echo esc_html(__('Please enter the security code','cp-contact-form-with-paypal')); ?>:<br />
+  <br /><?php echo esc_html(__('Please enter the security code','cp-contact-form-with-paypal')); ?>:<br />
   <img src="<?php echo cp_contactformpp_get_site_url().'/?cp_contactformpp=captcha&ps='.$CP_CPP_global_form_count.'&width='.cp_contactformpp_get_option('cv_width', CP_CONTACTFORMPP_DEFAULT_cv_width,$id).'&height='.cp_contactformpp_get_option('cv_height', CP_CONTACTFORMPP_DEFAULT_cv_height,$id).'&letter_count='.cp_contactformpp_get_option('cv_chars', CP_CONTACTFORMPP_DEFAULT_cv_chars,$id).'&min_size='.cp_contactformpp_get_option('cv_min_font_size', CP_CONTACTFORMPP_DEFAULT_cv_min_font_size,$id).'&max_size='.cp_contactformpp_get_option('cv_max_font_size', CP_CONTACTFORMPP_DEFAULT_cv_max_font_size,$id).'&noise='.cp_contactformpp_get_option('cv_noise', CP_CONTACTFORMPP_DEFAULT_cv_noise,$id).'&noiselength='.cp_contactformpp_get_option('cv_noise_length', CP_CONTACTFORMPP_DEFAULT_cv_noise_length,$id).'&bcolor='.cp_contactformpp_get_option('cv_background', CP_CONTACTFORMPP_DEFAULT_cv_background,$id).'&border='.cp_contactformpp_get_option('cv_border', CP_CONTACTFORMPP_DEFAULT_cv_border,$id).'&font='.cp_contactformpp_get_option('cv_font', CP_CONTACTFORMPP_DEFAULT_cv_font,$id); ?>"  id="captchaimg<?php echo esc_html($CP_CPP_global_form_count); ?>" alt="security code" border="0" class="skip-lazy"  />
   <br />
   <?php echo esc_html(__('Security Code','cp-contact-form-with-paypal')); ?>:<br />

@@ -526,58 +526,6 @@ function cp_contactformpp_cleanJSON($str)
 }
 
 
-function cp_contactformpp_load_discount_codes() {
-    global $wpdb;
-
-    if ( ! current_user_can('edit_pages') ) // prevent loading coupons from outside admin area
-    {
-        echo 'No enough privilegies to load this content.';
-        exit;
-    }
-
-    if (!defined('CP_CONTACTFORMPP_ID'))
-        define ('CP_CONTACTFORMPP_ID',intval($_GET["dex_item"]));
-
-    if (isset($_GET["add"]) && $_GET["add"] == "1")
-        $wpdb->insert( CP_CONTACTFORMPP_DISCOUNT_CODES_TABLE_NAME, array('form_id' => CP_CONTACTFORMPP_ID,
-                                                                         'code' => esc_sql(sanitize_text_field($_GET["code"])),
-                                                                         'discount' => esc_sql(sanitize_text_field($_GET["discount"])),
-                                                                         'availability' => esc_sql(sanitize_text_field($_GET["discounttype"])),
-                                                                         'expires' => esc_sql(sanitize_text_field($_GET["expires"])),
-                                                                         ));
-
-    if (isset($_GET["delete"]) && $_GET["delete"] == "1")
-        $wpdb->query( $wpdb->prepare( "DELETE FROM ".CP_CONTACTFORMPP_DISCOUNT_CODES_TABLE_NAME." WHERE id = %d", $_GET["code"] ));
-
-    $codes = $wpdb->get_results( 'SELECT * FROM '.CP_CONTACTFORMPP_DISCOUNT_CODES_TABLE_NAME.' WHERE `form_id`='.intval(CP_CONTACTFORMPP_ID));
-    if (count ($codes))
-    {
-        echo '<table>';
-        echo '<tr>';
-        echo '  <th style="padding:2px;background-color: #cccccc;font-weight:bold;">Coupon</th>';
-        echo '  <th style="padding:2px;background-color: #cccccc;font-weight:bold;">Discount</th>';
-        echo '  <th style="padding:2px;background-color: #cccccc;font-weight:bold;">Type</th>';
-        echo '  <th style="padding:2px;background-color: #cccccc;font-weight:bold;">Valid until</th>';
-        echo '  <th style="padding:2px;background-color: #cccccc;font-weight:bold;">Options</th>';
-        echo '</tr>';
-        foreach ($codes as $value)
-        {
-           echo '<tr>';
-           echo '<td>'.esc_html($value->code).'</td>';
-           echo '<td>'.esc_html($value->discount).'</td>';
-           echo '<td>'.($value->availability==1?"Fixed Value":"Percent").'</td>';
-           echo '<td>'.esc_html(substr($value->expires,0,10)).'</td>';
-           echo '<td>[<a href="javascript:dex_delete_coupon('.esc_js($value->id).')">Delete</a>]</td>';
-           echo '</tr>';
-        }
-        echo '</table>';
-    }
-    else
-        echo 'No discount codes listed for this form yet.';
-    exit;
-}
-
-
 /**
 * The following function needs to run on init, its purpose is:
 * - Check if the post is a PayPal IPN notification
@@ -596,10 +544,6 @@ function cp_contact_form_paypal_check_init_actions() {
     if ( isset( $_GET['cp_contactformpp_ipncheckexpress'] ) && $_GET['cp_contactformpp_ipncheckexpress'] != '' )
 		cp_contactformpp_check_IPN_verification_express();		   
 
-    if(isset($_GET) && array_key_exists('cp_contact_form_paypal_post',$_GET)) {
-        if ($_GET["cp_contact_form_paypal_post"] == 'loadcoupons')
-            cp_contactformpp_load_discount_codes();            
-    }
     
     if (isset( $_GET['cp_contactformpp'] ) && $_GET['cp_contactformpp'] == 'captcha' )
     {
@@ -607,7 +551,7 @@ function cp_contact_form_paypal_check_init_actions() {
         exit;        
     }        
 
-    if ( isset( $_GET['cp_contactformpp_csv'] ) && current_user_can('edit_pages') && is_admin() )
+    if ( isset( $_GET['cp_contactformpp_csv'] ) && current_user_can('edit_pages') && is_admin() && wp_verify_nonce( $_REQUEST['nonce'], 'cfwpp_update_actions'))
     {
         cp_contactformpp_export_csv();
         return;
