@@ -185,8 +185,8 @@ echo paginate_links(  array(
     'end_size'     => 1,
     'mid_size'     => 2,
     'prev_next'    => true,
-    'prev_text'    => __('&laquo; Previous'),
-    'next_text'    => __('Next &raquo;'),
+    'prev_text'    => __('&laquo; Previous','cp-contact-form-with-paypal'),
+    'next_text'    => __('Next &raquo;','cp-contact-form-with-paypal'),
     'type'         => 'plain',
     'add_args'     => false
     ) );
@@ -231,14 +231,14 @@ echo paginate_links(  array(
 		<td>
 		    <?php 
 		          if ($events[$i]->paid == 1) {
-		              echo '<span style="color:#00aa00;font-weight:bold">'.__("Paid").'</span><hr />';
+		              echo '<span style="color:#00aa00;font-weight:bold">'.__("Paid",'cp-contact-form-with-paypal').'</span><hr />';
 		              if (substr($events[$i]->paypal_post,0,2) != 'a:') echo esc_html(str_replace("\n","<br />",$events[$i]->paypal_post)); 
 		          }    
 		          else 
                       if ($events[$i]->paid == 2) 
-                          echo '<span style="color:#999999;font-weight:bold">'.__("Refunded").'</span>'; 
+                          echo '<span style="color:#999999;font-weight:bold">'.__("Refunded",'cp-contact-form-with-paypal').'</span>'; 
                       else
-		                  echo '<span style="color:#ff0000;font-weight:bold">'.__("Not Paid").'</span>'; 
+		                  echo '<span style="color:#ff0000;font-weight:bold">'.__("Not Paid",'cp-contact-form-with-paypal').'</span>'; 
 		    ?>
 		    
 		</td>

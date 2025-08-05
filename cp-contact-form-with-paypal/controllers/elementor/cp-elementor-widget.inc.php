@@ -47,7 +47,7 @@ if (!class_exists('CP_ContactFormwPayPal_Elementor'))
       function register_widget_category( $elements_manager ) {
           $elements_manager->add_category(
                                           'codepeople-widgets', array(
-                                          'title' => __('CodePeople', 'codepeople-builder'),
+                                          'title' => __('CodePeople', 'cp-contact-form-with-paypal'),
                                           'icon' => 'fa fa-paypal',
                                           ));
       }

@@ -4,90 +4,110 @@ Donate link: https://cfpaypal.dwbooster.com
 Tags: paypal,payment,paypal donation,paypal form,payment form
 Requires at least: 3.0.5
 Tested up to: 6.8
-Stable tag: 1.3.55
-License: GPLv2 or later
+Stable tag: 1.3.56
+License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-PayPal integration for contact forms, payment forms, order forms. Adds a contact form and connect it to a PayPal payment. Official PayPal Partner.
+Easily create contact forms with integrated PayPal payments. Accept service payments, orders, and more with a drag-and-drop form builder.
 
 == Description ==
 
-CP Contact Form with PayPal inserts a **contact form** into a WordPress website and connect it to a PayPal payment, either a **PayPal Standard**  payment or a **PayPal Express / PayPal Credit** payment where available.
+**CP Contact Form with PayPal** lets you add customizable **contact forms**, **payment forms**, and **donation forms** to your WordPress website, with built-in **PayPal integration** (Standard, Express, and PayPal Credit where available).
 
-New feature: Now includes also a visual form builder for customizing forms.
+Ideal for websites that need a quick and easy way to accept payments through PayPal — for products, services, donations, event registrations, consultations, and more.
 
-Once the user has filled the PayPal contact form fields and click the submit button the posted data is saved into the WordPress database and the user is automatically redirected to PayPal to complete a payment. After completed the PayPal payment, the website administrator (the email indicated from the settings) will receive an email with the form data and the user will receive a confirmation/thank you email.
+🎉 **New:** Includes a **visual form builder** to easily customize your forms.
 
-Both the paid forms and unpaid forms sent from the contact form will appear in the WordPress settings area with the mark of "Paid" or "Not Paid" so you can check all the details and contact the user if needed.
+When users submit the form, their data is saved in your WordPress database and they’re redirected to PayPal for secure payment. After completing the transaction, both the admin and user receive confirmation emails.
 
-This WordPress plugin is useful for different types of contact forms, booking forms, order forms, consultation services, payments for joining events (paid event registration), ect...
+You can view and manage form submissions in the dashboard, marked as **"Paid"** or **"Not Paid"**.
 
-= Features: =
+Perfect for:
+- Contact forms with payments
+- Donation forms
+- Booking and order forms
+- Event registration with payment
+- Paid consultations
 
-CP Contact Form with PayPal has the following main features:
+== Features ==
 
-* Supports PayPal Standard and PayPal Express / PayPal Credit (where available)
-* Supports many **contact forms** into the same WP website, each one with its own prices and settings.
-* Visual form builder for adding/editing/deleting fields
-* Allows checking the **messages** for both paid and un-paid submissions sent from the contact form.
-* You can **customize the notification email** details, including from address, subject and content with the contact form fields.
-* The website administrator receives an **email notification** of the paid contact message.
-* The customer receives a **"thank you - confirmation" message**.
-* **Easy setup** of the PayPal payment, basically just indicate the price and email linked to the PayPal account. There are optional fields for language and currency settings.
-* Export the contact form messages to CSV/Excel
-* Support PayPal taxes configuration
-* Support recurrent payments
-* Refunds can be processed directly from the plugin
-* Supports donation layouts for PayPal donation forms
-* Optionally request address at PayPal (useful for the delivery of tangible items)
-* Includes optional **captcha** verification as part of the contact form.
-* Elementor integration, Gutemberg integration
-* GDPR acceptance field (General Data Protection Regulation)
+✅ **PayPal Payment Integration**
+- Supports **PayPal Standard** and **PayPal Express / PayPal Credit**.
+- Configure prices and payment settings per form.
 
-= How it can be used =
+🧰 **Flexible Form Builder**
+- Visual drag-and-drop form editor.
+- Add, edit, delete fields without coding.
 
-These are some possible scenarios where this plugin is useful:
+📧 **Email Notifications**
+- Send confirmation emails to users.
+- Customize admin email notifications.
 
-* Contact form linked to a PayPal payment
-* As a PayPal button
-* For accepting donations through PayPal (leave a zero amount in the payment amount)
-* Support request forms or paid assistance contact forms
-* For receiving product orders (order form), purchases, bookings and reservations.
-* For automatic delivering of information after payment (put the information into the auto-reply message)
-* Registration forms for events with payment involved
-* ... any other use involving forms and PayPal payments
+📊 **Form Management**
+- Track and view submitted entries in the dashboard.
+- Filter by **Paid** or **Not Paid** status.
+- Export data to **CSV / Excel**.
 
-= Commercial Features: =
+🔐 **Secure and Customizable**
+- Add **GDPR consent checkbox**.
+- Optional **captcha** for spam protection.
+- Request shipping address through PayPal if needed.
 
-There are also commercial versions available with more features:
+🔁 **Recurring Payments & Refunds**
+- Supports **recurring billing**.
+- Issue refunds directly from the plugin.
 
-* Visual form builder: The free version includes an useful basic form builder, however the commercial version features an easy, strong and full features visual form builder with all you need to build any form.
-* Works also without PayPal, discount codes and dynamic/open prices, additional configuration settings.
-* Other payment methods: PayPal Pro, Stripe Payments, Skrill, Authorize.net, Mollie / iDEAL, TargetPay / iDEAL, Sage Pay, SagePayments, Redsys TPV
-* Tons of additional features and add ons: Mailchimp, reCapctha, SMS message delivery, Signature fields, etc...
+🎨 **Styling and Compatibility**
+- Works with **Elementor**, **Gutenberg**, and standard WordPress editors.
+- Supports **PayPal donation layout**.
+- Integrates easily into posts and pages via shortcode.
 
-You can get these features at: https://cfpaypal.dwbooster.com
+🌍 **Multilingual & International Ready**
+- UTF-8 and multilingual-ready.
+- Translation-ready with included `.po`/`.mo` files.
+- Supports language and currency options.
 
-Note: Payments processed through the plugin are SCA ready (Strong Customer Authentication), compatible with the new Payment services (PSD 2) - Directive (EU) that comes into full effect on 14 September, 2019.
+== Use Cases ==
 
-= Language Support =
+You can use CP Contact Form with PayPal for:
 
-The Contact Form with PayPal plugin is compatible with all charsets. The troubleshoot area contains options to change the encoding of the plugin database tables if needed.
+- Contact forms that require a payment
+- Simple PayPal donation buttons with custom fields
+- Paid event registrations or appointment bookings
+- Online product ordering with form input
+- Selling digital files or services
+- Subscription-based services
+- Custom quote and invoice requests
 
-Translations are supported through PO/MO files located in the Contact Form with PayPal plugin folder "languages".
+== Premium Features ==
 
-Multiple language translations are already included in the plugin.
+Unlock additional features with the commercial version:
 
+- Advanced visual form builder with conditional logic
+- Dynamic pricing, discount codes, optional PayPal usage
+- Integration with other gateways: **Stripe**, **PayPal Pro**, **Authorize.net**, **Skrill**, **Mollie**, **iDEAL**, **Sage Pay**, **Redsys**, and more
+- Add-ons for **Mailchimp**, **reCAPTCHA**, **SMS notifications**, **signature fields**, and more
+
+🔗 [Get the Premium Version](https://cfpaypal.dwbooster.com)
+
+> 💡 All payment methods are **SCA-ready** and compliant with **PSD2 EU regulations**.
 
 == Installation ==
 
-CP Contact Form with PayPal can be installed following these steps:
+Install it from your WordPress dashboard (plugins menu) or if you prefer a manual installation:
 
-1.	Download and unzip the CP Contact Form with PayPal plugin
-2.	Upload the entire cp-contact-form-with-paypal/ directory to the /wp-content/plugins/ directory
-3.	Activate the CP Contact Form with PayPal plugin through the Plugins menu in WordPress
-4.	Configure the PayPal contact form settings at the administration menu >> Settings >> CP Contact Form with PayPal
-5.	To insert the PayPal contact form into some content or post use the icon that will appear when editing contents
+1. Download and unzip the plugin file.
+2. Upload the entire `/cp-contact-form-with-paypal/` directory to `/wp-content/plugins/`.
+3. Activate the plugin via the **Plugins** menu in WordPress.
+4. Go to **Settings > CP Contact Form with PayPal** to configure your form and payment options.
+5. To insert a form into a post or page, use the form icon in the editor or shortcode provided.
+
+== Language Support ==
+
+The plugin supports all character sets and is fully translation-ready. Multiple languages are already included. PO/MO files are located in the `/languages/` directory.
+
+If you need to adjust the database character set, use the options in the **Troubleshooting** area.
+
 
 == Frequently Asked Questions ==
 
@@ -980,7 +1000,10 @@ When done to refund a payment just use the refund button that appears for each t
 = 1.3.55 =
 * WP 6.8 prefetch
 
+= 1.3.56 =
+* Misc Improvements
+
 == Upgrade Notice ==
 
-= 1.3.55 =
-* WP 6.8 prefetch
+= 1.3.56 =
+* Misc Improvements
