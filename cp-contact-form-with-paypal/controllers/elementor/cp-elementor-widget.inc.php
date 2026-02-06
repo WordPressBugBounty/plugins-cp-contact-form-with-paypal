@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if (!class_exists('CP_ContactFormwPayPal_Elementor'))
 {    
     class CP_ContactFormwPayPal_Elementor {
@@ -58,4 +60,3 @@ if (!class_exists('CP_ContactFormwPayPal_Elementor'))
 
 $cp_cfte_elementor_widget = new CP_ContactFormwPayPal_Elementor;
 
-?>

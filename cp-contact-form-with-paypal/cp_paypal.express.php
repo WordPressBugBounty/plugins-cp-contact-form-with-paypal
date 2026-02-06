@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( !defined('CP_CONTACTFORMPP_AUTH_INCLUDE') ) { echo 'Direct access not allowed.';  exit; }
 
 if( !class_exists( 'DEXBCCF_PayPalEXPC' ) )
@@ -243,4 +245,3 @@ if( !class_exists( 'DEXBCCF_PayPalEXPC' ) )
 	}
 
 }
-?>

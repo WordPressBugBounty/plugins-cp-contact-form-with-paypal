@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( !defined('CP_CONTACTFORMPP_AUTH_INCLUDE') ) { echo 'Direct access not allowed.';  exit; }
   
 add_action( 'admin_enqueue_scripts', 'cpcfwpp_feedback_insert_adminScripts', 1); 
@@ -194,4 +196,3 @@ function cpcfwpp_update_reason(field)
 	</script><?php
 }
 
-?>

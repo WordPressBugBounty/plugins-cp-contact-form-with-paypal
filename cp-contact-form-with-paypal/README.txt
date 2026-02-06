@@ -3,8 +3,8 @@ Contributors: codepeople, paypaldev
 Donate link: https://cfpaypal.dwbooster.com
 Tags: paypal,payment,paypal donation,paypal form,payment form
 Requires at least: 3.0.5
-Tested up to: 6.8
-Stable tag: 1.3.56
+Tested up to: 6.9
+Stable tag: 1.3.61
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -226,9 +226,10 @@ When done to refund a payment just use the refund button that appears for each t
 == Screenshots ==
 
 1. PayPal Contact Forms List
-2. PayPal Contact Form Settings
-3. Inserting a PayPal contact form into a page
+2. Messages List
+3. PayPal Contact Form Settings
 4. Sample PayPal contact form
+5. Inserting a PayPal contact form into a page
 
 == Changelog ==
 
@@ -1003,7 +1004,22 @@ When done to refund a payment just use the refund button that appears for each t
 = 1.3.56 =
 * Misc Improvements
 
+= 1.3.57 =
+* More complete IPN verification
+
+= 1.3.58 =
+* Compatible with WP 6.9
+
+= 1.3.59 =
+* IPN udpate
+
+= 1.3.60 =
+* SendGrid SG Speed Optimizer compatibility update
+
+= 1.3.61 =
+* New anti-spam captcha
+
 == Upgrade Notice ==
 
-= 1.3.56 =
-* Misc Improvements
+= 1.3.61 =
+* New anti-spam captcha

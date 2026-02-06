@@ -1,5 +1,7 @@
 <?php 
   
+  if ( ! defined( 'ABSPATH' ) ) exit;
+  
   if ( !defined('CP_CONTACTFORMPP_AUTH_INCLUDE') ) { echo 'Direct access not allowed.';  exit; }
   if ( !is_admin() || !current_user_can('manage_options') ) {echo 'Direct access not allowed.';exit;} 
 

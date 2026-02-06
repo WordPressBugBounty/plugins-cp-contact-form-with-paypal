@@ -1,5 +1,9 @@
-<?php if ( !defined('CP_CONTACTFORMPP_AUTH_INCLUDE') ) { echo 'Direct access not allowed.';  exit; } ?>
 <?php 
+
+  if ( ! defined( 'ABSPATH' ) ) exit;
+  
+  if ( !defined('CP_CONTACTFORMPP_AUTH_INCLUDE') ) { echo 'Direct access not allowed.';  exit; } 
+
   $custom_styles = base64_decode(get_option('CP_CFWPP_CSS', '')); 
   if ($custom_styles != '')
       echo '<style type="text/css">'.$custom_styles.'</style>';

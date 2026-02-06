@@ -1,5 +1,7 @@
 <?php
  
+if ( ! defined( 'ABSPATH' ) ) exit;
+ 
 if ( !defined('CP_CONTACTFORMPP_AUTH_INCLUDE') ) { echo 'Direct access not allowed.';  exit; } 
 
 // functions
@@ -886,12 +888,37 @@ function cp_contactformpp_check_IPN_verification() {
 
     if (CP_CONTACTFORMPP_STEP2_VRFY)
     {
+        
+        $req = 'cmd=_notify-validate';
+        foreach ($_POST as $key => $value) {
+            $value = urlencode(stripslashes($value));
+            $req .= "&$key=$value";
+        }
+    
+        $ch = curl_init('https://ipnpb.paypal.com/cgi-bin/webscr');
+        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($ch, CURLOPT_FORBID_REUSE, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Connection: Close'));
+
+        $res = curl_exec($ch);
+        curl_close($ch);
+
+        if (strcmp($res, 'VERIFIED') != 0) {
+            die('IPN validation failed');
+        }
+        
 	    if ($payment_status != 'Completed' && $payment_type != 'echeck')
 	        return;
         
 	    if ($payment_type == 'echeck' && $payment_status != 'Pending')
 	        return;
     }
+    
 	$str = '';
     if ($_POST["first_name"]) $str .= 'Buyer: '.esc_html($_POST["first_name"])." ".esc_html($_POST["last_name"])."\n";
     if ($_POST["payer_email"]) $str .= 'Payer email: '.$payer_email."\n";
@@ -1304,7 +1331,7 @@ function cp_contactformpp_save_options()
                   'fp_emailformat' => sanitize_text_field($_POST['fp_emailformat']),
 
                   'cu_enable_copy_to_user' => sanitize_text_field($_POST['cu_enable_copy_to_user']),
-                  'cu_user_email_field' => sanitize_text_field(@$_POST['cu_user_email_field']),
+                  'cu_user_email_field' => isset($_POST['cu_user_email_field']) ? sanitize_text_field($_POST['cu_user_email_field']) : '',
                   'cu_subject' => sanitize_text_field($_POST['cu_subject']),
                   'cu_message' => cp_contactformpp_clean($_POST['cu_message']),
                   'cu_emailformat' => sanitize_text_field($_POST['cu_emailformat']),
@@ -1621,8 +1648,6 @@ if (!class_exists('CP_PayPalRefund'))
 
 $codepeople_promote_banner_plugins[ 'cp-contact-form-with-paypal' ] = array( 
                       'plugin_name' => 'CP Contact Form with PayPal', 
-                      'plugin_url'  => 'https://wordpress.org/support/plugin/cp-contact-form-with-paypal/reviews/?filter=5#new-post'
+                      'plugin_url'  => 'https://wordpress.org/support/plugin/cp-contact-form-with-paypal/reviews/?#new-post'
 );
 require_once 'banner.php';
-
-?>

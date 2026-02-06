@@ -3,13 +3,14 @@
 Plugin Name: CP Contact Form with PayPal
 Plugin URI: https://cfpaypal.dwbooster.com
 Description: Inserts a contact form into your website and lets you connect it to a Paypal payment.
-Version: 1.3.56
+Version: 1.3.61
 Author: CodePeople, paypaldev
 Author URI: https://cfpaypal.dwbooster.com
 License: GPLv2
 Text Domain: cp-contact-form-with-paypal
 */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /* initialization / install / uninstall functions */
 
@@ -63,7 +64,7 @@ define('CP_CONTACTFORMPP_DEFAULT_cv_max_font_size', '35');
 define('CP_CONTACTFORMPP_DEFAULT_cv_noise', '200');
 define('CP_CONTACTFORMPP_DEFAULT_cv_noise_length', '4');
 define('CP_CONTACTFORMPP_DEFAULT_cv_background', 'ffffff');
-define('CP_CONTACTFORMPP_DEFAULT_cv_border', '000000');
+define('CP_CONTACTFORMPP_DEFAULT_cv_border', 'ffffff');
 define('CP_CONTACTFORMPP_DEFAULT_cv_text_enter_valid_captcha', 'Please enter a valid captcha code.');
 
 
@@ -77,7 +78,7 @@ define('CP_CONTACTFORMPP_DEFAULT_PRODUCT_NAME','Reservation');
 define('CP_CONTACTFORMPP_DEFAULT_COST','25');
 define('CP_CONTACTFORMPP_DEFAULT_CURRENCY','USD');
 define('CP_CONTACTFORMPP_DEFAULT_PAYPAL_LANGUAGE','EN');
-define('CP_CONTACTFORMPP_STEP2_VRFY', false);
+define('CP_CONTACTFORMPP_STEP2_VRFY', true);
 
 // database
 define('CP_CONTACTFORMPP_FORMS_TABLE', 'cp_contact_form_paypal_settings');
@@ -199,3 +200,23 @@ add_action( 'init', function(){
         return $v;
     }, 10, 5 );
 } );
+
+
+
+// Exclude from SiteGround Speed Optimizer JS Combination
+add_filter( 'sgo_javascript_combine_exclude', 'cfpaypal_apphourbk_exclude_js_from_combination' );
+function cfpaypal_apphourbk_exclude_js_from_combination( $exclude_list ) {
+    $exclude_list[] = 'cp_contactformpp_validate_script';
+    $exclude_list[] = 'cp_contactformpp_builder_script';
+    $exclude_list[] = 'cp_contactformppv2_buikder_script';
+    return $exclude_list;
+}
+
+// Exclude from SiteGround Speed Optimizer JS Minification
+add_filter( 'sgo_js_minify_exclude', 'cfpaypal_apphourbk_exclude_js_from_minification' );
+function cfpaypal_apphourbk_exclude_js_from_minification( $exclude_list ) {
+    $exclude_list[] = 'cp_contactformpp_validate_script';
+    $exclude_list[] = 'cp_contactformpp_builder_script';
+    $exclude_list[] = 'cp_contactformppv2_buikder_script';
+    return $exclude_list;
+}

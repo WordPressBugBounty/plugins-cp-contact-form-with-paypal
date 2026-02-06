@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( !defined('CP_CONTACTFORMPP_AUTH_INCLUDE') ) { echo 'Direct access not allowed.';  exit; }
 
 global $codepeople_promote_banner_plugins;
@@ -105,4 +107,4 @@ if(!function_exists( 'codepeople_add_promote_banner' ))
 	}
 	add_action( 'admin_bar_menu', 'codepeople_add_promote_banner' );
 } // End codepeople_promote_banner block
-?>
+

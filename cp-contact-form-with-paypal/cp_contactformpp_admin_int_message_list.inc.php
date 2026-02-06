@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( !defined('CP_CONTACTFORMPP_AUTH_INCLUDE') ) { echo 'Direct access not allowed.';  exit; }
 
 if ( !is_admin() )
@@ -288,10 +290,3 @@ echo paginate_links(  array(
  });
  
 </script>
-
-
-
-
-
-
-
