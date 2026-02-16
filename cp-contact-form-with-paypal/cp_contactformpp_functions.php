@@ -310,8 +310,8 @@ function cp_contactformpp_get_public_form($id) {
     $CP_CPP_global_form_count = "_".$CP_CFPP_global_form_count_number;  
     if (!defined('CP_AUTH_INCLUDE')) define('CP_AUTH_INCLUDE', true);
 
-    if ($id != '')
-        $myrows = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix.CP_CONTACTFORMPP_FORMS_TABLE." WHERE id=".$id );
+    if ($id != '')        
+        $myrows = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM ".$wpdb->prefix.CP_CONTACTFORMPP_FORMS_TABLE." WHERE id=%d", $id) );
     else
         $myrows = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix.CP_CONTACTFORMPP_FORMS_TABLE );
     if ($id == '') $id = $myrows[0]->id;
@@ -439,7 +439,12 @@ function set_cp_contactformpp_insert_button() {
 function cp_contactformpp_html_post_page() {       
     if (!empty($_GET["pwizard"]) && $_GET["pwizard"] == '1')
         include_once dirname( __FILE__ ) . '/cp_publish_wizard.inc.php';
-    else if (isset($_GET["cal"]) && $_GET["cal"] != '')
+    else if (isset($_GET["cal"]) && $_GET["cal"] != ''
+             && $_GET["page"] != 'cp_contact_form_addons'
+             && $_GET["page"] != 'cp_contact_form_paypal_upgrade'
+             && $_GET["page"] != 'cp_contact_form_paypal_demo'
+             && $_GET["page"] != 'cp_contact_form_paypal_doc'
+             )
     {
         $_GET["cal"] = intval($_GET["cal"]);
         if (isset($_GET["edit"]) && $_GET["edit"] == '1')
@@ -451,7 +456,7 @@ function cp_contactformpp_html_post_page() {
     }
     else
     {    
-        if (isset($_GET["page"]) &&$_GET["page"] == 'cp_contact_form_addons')
+        if (isset($_GET["page"]) && $_GET["page"] == 'cp_contact_form_addons')
         {
             @include_once dirname( __FILE__ ) . '/cp_contactformpp-addons.inc.php';
         } 
@@ -1503,12 +1508,13 @@ function cp_contactformpp_get_option ($field, $default_value = '', $id = '')
     }    
     if ($id == '') 
         $id = CP_CONTACTFORMPP_ID;
+    $id = intval($id);
     global $wpdb, $cp_contactformpp_option_buffered_item, $cp_contactformpp_option_buffered_id;
     if ($cp_contactformpp_option_buffered_id == $id)
         $value = (property_exists($cp_contactformpp_option_buffered_item, $field) && isset($cp_contactformpp_option_buffered_item->$field) ? @$cp_contactformpp_option_buffered_item->$field : '');
     else
     {
-       $myrows = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix.CP_CONTACTFORMPP_FORMS_TABLE." WHERE id=".$id );
+       $myrows = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM ".$wpdb->prefix.CP_CONTACTFORMPP_FORMS_TABLE." WHERE id=%d", $id) );
        if (count($myrows)) 
        {
            $value = $myrows[0]->$field;

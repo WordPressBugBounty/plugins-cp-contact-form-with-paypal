@@ -4,7 +4,7 @@ Donate link: https://cfpaypal.dwbooster.com
 Tags: paypal,payment,paypal donation,paypal form,payment form
 Requires at least: 3.0.5
 Tested up to: 6.9
-Stable tag: 1.3.61
+Stable tag: 1.3.62
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -1019,7 +1019,10 @@ When done to refund a payment just use the refund button that appears for each t
 = 1.3.61 =
 * New anti-spam captcha
 
+= 1.3.62 =
+* Access rules update
+
 == Upgrade Notice ==
 
-= 1.3.61 =
-* New anti-spam captcha
+= 1.3.62 =
+* Access rules update
